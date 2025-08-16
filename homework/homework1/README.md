@@ -17,3 +17,5 @@ Goal → Stage → Deliverable
 - ...
 ## Repo Plan
 /data/, /src/, /notebooks/, /docs/ ; cadence for updates
+
+"Working on it"

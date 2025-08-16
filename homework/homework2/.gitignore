@@ -1,0 +1,10 @@
+/env/
+#Ignore the data
+/data/
+
+#Ignore the environment files
+.env
+
+#Ignore the Pyhton cache files
+__pycache__/
+*.pyc
