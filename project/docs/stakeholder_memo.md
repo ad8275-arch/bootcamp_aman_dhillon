@@ -34,5 +34,5 @@ Our project addresses this gap by developing a **Jump-Diffusion Enhanced BS mode
 
 ---
 
-**Prepared by:** Aman Dhillon
+**Prepared by:** Aman Dhillon,
 NYU Tandon School of Engineering FRE Department
