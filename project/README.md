@@ -54,7 +54,7 @@ The result will improve **risk assessment, hedging strategies, and execution qua
 
 ---
 
-## 🔄 Lifecycle Mapping
+##  Lifecycle Mapping
 
 | Project Goal                                   | Stage                        | Deliverable                                                |
 | ---------------------------------------------- | ---------------------------- | ---------------------------------------------------------- |
