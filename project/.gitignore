@@ -1,0 +1,10 @@
+#Ignore the environment files
+/project_env/
+
+#Ignore the environment file
+.env
+
+#Ignore the Pyhton cache files
+__pycache__/
+*.pyc
+
