@@ -12,3 +12,4 @@ __pycache__/
 #Ignore enviroment files 
 
 .DS_Store
+/project/
