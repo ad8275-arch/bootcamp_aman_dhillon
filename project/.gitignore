@@ -3,7 +3,7 @@
 
 #Ignore the environment file
 
-
+/data/
 #Ignore the Pyhton cache files
 __pycache__/
 *.pyc
