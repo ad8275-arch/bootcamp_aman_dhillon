@@ -1,0 +1,21 @@
+Title: Jump-Diffusion Enhanced Black–Scholes for European Options
+
+Problem:
+1. Black–Scholes assumes continuous price paths
+2. Real markets experience sudden jumps (earnings, policy shocks, geopolitical events)
+3. Leads to systematic mispricing → hidden risks
+
+Solution:
+1. Extend BS with Jump-Diffusion process
+2. Captures discrete jumps + continuous movements
+3. Balances realism with speed for trading desks
+
+Stakeholders:
+1. Risk Management Lead → compliance & governance
+2. Options Traders / Quants → fast & accurate hedging + execution
+3. Deliverables
+
+Baseline BS pricing tool:
+1. Jump-Diffusion model with calibration
+2. Python API for traders & risk teams
+3. Validation report (accuracy, robustness, runtime)
