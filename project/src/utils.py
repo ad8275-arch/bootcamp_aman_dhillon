@@ -96,3 +96,33 @@ def clean_and_convert_numeric_columns(df: pd.DataFrame) -> pd.DataFrame:
 def contract_size_handler(contract_size):
     contract_size = contract_size.split(' x ')
     return int(contract_size[0])* int(contract_size[1])
+
+
+def black_scholes(S, K, T, r, sigma, option_type='call'):
+    """
+    Calculate the Black-Scholes price for a European call or put option.
+
+    Parameters:
+    S : float : Stock price
+    K : float : Strike price
+    T : float : Time to maturity (in years)
+    r : float : Risk-free interest rate (annual rate)
+    sigma : float : Volatility of the underlying stock (annual standard deviation)
+    option_type : str : 'call' or 'put'
+
+    Returns:
+    price : float : Price of the option
+    """
+    try:
+        d1 = (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T))
+        d2 = d1 - sigma * math.sqrt(T)
+    except: return np.nan
+    if option_type == 'call':
+        try:
+            price = S * norm.cdf(d1) - K * math.exp(-r * T) * norm.cdf(d2)
+        except: price=np.nan
+    elif option_type == 'put':
+        try:
+            price = K * math.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+        except:price=np.nan
+    return price
