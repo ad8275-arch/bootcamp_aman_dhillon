@@ -1,0 +1,121 @@
+# 📊 Final Stock Analysis Report  
+
+**Audience:** Investment Strategy Stakeholders  
+**Prepared by:** [Your Name]  
+**Date:** August 2025  
+
+---
+
+## �� Executive Summary  
+
+- The stock demonstrated **strong recovery momentum** after a sharp correction in early 2025, ending at new highs by August 2025.  
+- **Trading volume patterns** suggest institutional activity and panic selling at price dips, highlighting investor sentiment as a key driver.  
+- **Risk-adjusted performance (Sharpe ratio)** is most sensitive to return assumptions, underscoring the importance of stress testing before capital allocation.  
+
+---
+
+## 📈 Key Visualizations  
+
+### 1. Closing Price Trend Over Time  
+**Plot type:** Line Chart  
+
+- **What it shows:** Daily closing prices from Aug 2024 – Aug 2025.  
+- **Key insight:** Upward momentum late 2024, sharp dip Mar–Apr 2025, strong recovery through Aug 2025.  
+- **Assumptions/limitations:** No adjustment for external market shocks or corporate actions.  
+
+![Closing Price Over Time](images/closing_price_over_time.png)  
+
+---
+
+### 2. Trading Volume vs Adjusted Close Price  
+**Plot type:** Scatter Plot  
+
+- **What it shows:** Relationship between trading volume and adjusted close price.  
+- **Key insight:** Spikes in volume cluster at lower prices, reflecting potential panic selling. No strong linear correlation overall.  
+- **Assumptions/limitations:** Does not capture time dynamics or external liquidity conditions.  
+
+![Volume vs Price Scatter](images/volume_vs_price.png)  
+
+---
+
+### 3. Average Monthly Closing Price  
+**Plot type:** Bar Chart  
+
+- **What it shows:** Average monthly close prices Aug 2024 – Aug 2025.  
+- **Key insight:** Steady growth through Feb 2025, decline in Mar–Apr 2025, strong recovery afterward.  
+- **Assumptions/limitations:** Monthly averages smooth out day-to-day volatility, hiding intramonth events.  
+
+![Average Monthly Close](images/monthly_avg_close.png)  
+
+---
+
+## ⚖️ Assumptions & Risks  
+
+- Analysis assumes **clean historical data** (no missing or erroneous entries).  
+- **Macroeconomic shocks** (e.g., interest rate hikes, geopolitical risks) are not explicitly modeled.  
+- Results rely on **past data** and do not guarantee forward-looking performance.  
+- Scenario sensitivity is **limited to return & volatility stress tests**; does not include liquidity crunches or black swan events.  
+
+---
+
+## 📊 Sensitivity Analysis  
+
+### Sensitivity Table  
+| Return Change | Volatility Change | Sharpe Ratio Impact |  
+|---------------|-------------------|---------------------|  
+| -20% return   | Baseline volatility | Significant downside |  
+| +20% return   | Baseline volatility | Strong upside |  
+| Baseline return | -20% volatility   | Moderate upside |  
+| Baseline return | +20% volatility   | Moderate downside |  
+
+**Key Takeaways:**  
+- Sharpe ratio is **more sensitive to changes in returns** than volatility.  
+- -20% return stress produces the most severe downside.  
+- Volatility changes matter but have a smaller relative effect.  
+
+### Tornado Chart  
+
+![Tornado Chart](images/tornado_sensitivity.png)  
+
+- **Return assumptions dominate** portfolio outcomes.  
+- **Volatility is secondary** but still material for risk mitigation.  
+
+---
+
+## 📝 Decision Implications  
+
+- **Performance varies meaningfully across scenarios**  
+  - Outlier-adjusted results delivered the strongest returns.  
+  - Baseline and imputed scenarios lagged, signaling the importance of robust data cleaning and assumptions.  
+
+- **Risk–return trade-off requires careful balance**  
+  - Scatter plot shows higher volatility does not always bring higher returns.  
+  - Stakeholders should prioritize **risk-adjusted returns (Sharpe ratio)** over raw return.  
+
+- **Sensitivity analysis highlights key drivers**  
+  - Sharpe ratio is highly sensitive to input assumptions.  
+  - Stress testing is critical before committing capital.  
+
+- **Opportunities**  
+  - Outlier-adjusted strategy may unlock higher performance.  
+  - Current price trends suggest room for strategic entry points.  
+
+- **Risks**  
+  - Results depend on scenario assumptions; real markets may diverge.  
+  - Volatility or data errors could materially alter outcomes.  
+
+- **Recommended next steps**  
+  - Focus on **risk-adjusted metrics** in decision-making.  
+  - Expand scenario analysis to include macroeconomic shocks.  
+  - Revisit assumptions quarterly and update models with fresh data.  
+
+---
+
+## �� Deliverables  
+
+- **Report:** `/deliverables/final_report.md` (exportable to PDF)  
+- **Figures:** `/deliverables/images/` (charts & sensitivity visuals)  
+- **README.md:** Audience rationale and format choice  
+
+---
+
