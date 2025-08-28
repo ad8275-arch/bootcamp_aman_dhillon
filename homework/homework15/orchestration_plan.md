@@ -3,7 +3,7 @@
 ## Pipeline Overview: Directed Acyclic Graph (DAG)
 The project's workflow can be represented as a Directed Acyclic Graph (DAG), showing the logical flow and dependencies of each task.
 
-![Pipeline DAG Sketch](https://placehold.co/600x400/000/fff?text=Pipeline+DAG+Sketch)
+
 
 1. **Ingest Data** – Retrieves the raw data.  
 2. **Clean Data & Feature Engineering** – Cleans and engineers new features. Depends on *Ingest Data*.  
