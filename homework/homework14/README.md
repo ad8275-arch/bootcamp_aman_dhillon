@@ -16,13 +16,13 @@ This repository contains a Jupyter Notebook for a machine learning project focus
 
 ## Prerequisites
 
-```bash
+
 pip install numpy pandas matplotlib seaborn plotly scikit-learn tensorflow
 All required dependencies are also listed in requirements.txt.
 
 The notebook relies on a local src/utils.py file, which contains custom functions for data processing. This file must be present in a directory one level up from the notebook.
 
-Usage
+## Usage
 1. Clone the Repository
 git clone https://github.com/ad8275-arch
 cd bootcamp_aman_dhillon
@@ -44,7 +44,7 @@ Download the SPY_options_2020-2022.csv file from its source and place it in a da
 
 Open practice_notebook2.ipynb in a Jupyter environment (e.g., JupyterLab, VS Code, Google Colab) and run all cells in sequence.
 
-Notes
+## Notes
 
 Ensure all dependencies are installed and paths are correctly set.
 
@@ -53,5 +53,4 @@ Use the utils.py functions for memory optimization and feature engineering to ma
 For model performance comparison, check the plots and evaluation metrics at the end of the notebook.
 
 Author
-
 Aman Dhillon
