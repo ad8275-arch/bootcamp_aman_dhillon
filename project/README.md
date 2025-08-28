@@ -1,72 +1,80 @@
-# Jump-Diffusion Enhanced Black–Scholes Model for European Option Pricing
 
-**Stage:** Problem Framing & Scoping (Stage 01)  
+# Stage: Problem Framing & Scoping (Stage 01)
 **Date:** August 18, 2025  
 
 ---
 
 ## Problem Statement
-Traditional Black–Scholes (BS) models are widely used for European option pricing, but they assume continuous price movements.  
-In real markets, asset prices often experience sudden jumps due to news shocks, policy changes, or earnings announcements.  
 
-**Problem:** Ignoring these jumps leads to systematic mispricing, especially for out-of-the-money options, which exposes traders and risk managers to unrecognized risks.  
+While theoretical models like **Black-Scholes** provide a baseline for option pricing, they often fail to capture the complex, non-linear dynamics observed in real-world markets. Factors like market microstructure, order flow, and behavioral biases create pricing patterns that these models miss.
 
-**Solution:** This project extends the Black–Scholes model with a **jump diffusion process** to capture market shocks while maintaining computational efficiency.  
-The result will improve **risk assessment, hedging strategies, and execution quality** for options traders.  
+**Problem:**  
+Relying solely on theoretical models can lead to systematic mispricing and missed trading opportunities. Traders and risk managers need a pricing tool that learns directly from market data to generate more accurate, empirical valuations.
+
+**Solution:**  
+This project develops a **machine learning pipeline** to predict option prices using a rich set of engineered features. By training models like **Gradient Boosting** and **Recurrent Neural Networks (GRU)**, we can capture intricate market patterns that theoretical formulas cannot. The result will be a more accurate pricing model for improved trade execution, risk assessment, and alpha generation.
 
 ---
 
-##  Stakeholders & Users
-- **Decision Maker — Risk Management Lead**  
-  Ensures pricing models are compliant, realistic, and pass internal model risk governance.  
+## Stakeholders & Users
+
+- **Decision Maker — Head of Quantitative Trading**  
+  Needs to approve and deploy models that are demonstrably more accurate than existing benchmarks and are robust to changing market conditions.
 
 - **Primary Users — Options Traders & Quant Analysts**  
-  Need **fast and accurate option values** for hedging, risk monitoring, and trade execution in volatile markets.  
+  Require fast and precise price predictions to identify arbitrage opportunities, manage risk, and execute trades efficiently, especially in volatile markets.
 
 ---
 
 ## Useful Answer & Decision
-- **Type:** Predictive — model forecasts option values under jump risk  
-- **Metrics:**  
-  - *Accuracy* → Error reduction vs. Black–Scholes baseline  
-  - *Robustness* → Reliable across stressed/jump-heavy scenarios  
-  - *Speed* → Must run within sub-second latency for trading desk use  
-- **Final Artifact:** Python-based pricing engine with a callable API + notebook for scenario analysis  
+
+**Type:** Predictive — the models forecast option market prices based on historical data.
+
+**Metrics:**
+- **Accuracy** → Significant reduction in RMSE and MAE compared to a baseline model.  
+- **Robustness** → Stable performance across various market conditions and out-of-sample data.  
+- **Speed** → Model inference must be fast enough for practical use on the trading desk.  
+
+**Final Artifact:**  
+A trained ML model (e.g., the final GRU or LSTM model) serialized for use, and a comprehensive analysis notebook that validates its performance and explains the key feature drivers.
 
 ---
 
 ## Assumptions & Constraints
-- **Assumptions**
-  - Market data is sufficient for calibration of jump intensity & distribution  
-  - Jump diffusion improves pricing realism without excessive computational cost
-  - Common BS model assumptions.  
 
-- **Constraints**
-  - Model must be interpretable to pass **internal model risk governance**  
-  - Integration should fit existing **trading architecture** with minimal disruption  
+### Assumptions
+- The historical options data (`syp_2020_2022.csv`) is a reliable representation of the market dynamics we want to model.  
+- The engineered features (e.g., *moneyness*, time to expiration, Greeks) effectively capture the key drivers of option prices.  
+- Market patterns learned from the training data will persist in the near future (i.e., the model is not overfit).  
+
+### Constraints
+- The model's predictions must be easily interpretable, or its feature importance must be explainable to pass internal model risk governance.  
+- The final solution must be reproducible; all data processing and modeling steps are contained within the project's code.  
 
 ---
 
 ## Risks & Known Unknowns
-- **Calibration Risk** → Limited historical data on extreme jumps may cause unstable parameter estimates  
-- **Model Risk** → Jump diffusion may overfit to rare events, reducing generalizability  
-- **Adoption Risk** → Traders may initially distrust the new model compared to familiar Black–Scholes  
+
+- **Overfitting Risk** → The complex models (GRU, LSTM) might memorize the training data and perform poorly on unseen market data.  
+- **Concept Drift Risk** → A fundamental shift in market regime (e.g., a sudden volatility spike) could invalidate the learned patterns, requiring the model to be retrained.  
+- **Data Quality Risk** → Errors or gaps in the historical data could lead to a poorly performing model.  
 
 ---
 
-##  Lifecycle Mapping
+## Lifecycle Mapping
 
-| Project Goal                                   | Stage                        | Deliverable                                                |
-| ---------------------------------------------- | ---------------------------- | ---------------------------------------------------------- |
-| 1. Establish baseline Black–Scholes pricing    | Problem Framing & Scoping    | Scoping doc + repo skeleton                                |
-| 2. Extend with jump diffusion                  | Model Development            | Trained model & validation notebook                        |
-| 3. Deliver production-ready pricing tool       | Deployment                   | Python API + usage documentation                           |
+| Project Goal                        | Stage                          | Deliverable                                  |
+|-------------------------------------|--------------------------------|----------------------------------------------|
+| 1. Scope the ML pricing project     | Problem Framing & Scoping      | This scoping document + repo skeleton        |
+| 2. Develop and train ML models      | EDA, Feature Eng, & Modeling   | `practice_notebook2.ipynb`                   |
+| 3. Deliver a robust pricing tool    | Productization & Deployment    | A modularized script/API for the best model  |
+
 
 ---
 
 ##  Repository Plan
 /data/ → Market & simulated option data (raw + processed)
-/src/ → Implementation of Black–Scholes, jump diffusion, API code
+/src/ → Implementation of Black–Scholes, LSTM and GRU, API code
 /notebooks/ → Exploratory analysis, calibration experiments, validation
 /docs/ → Stakeholder memo, validation reports, explainability notes
 
@@ -76,7 +84,6 @@ The result will improve **risk assessment, hedging strategies, and execution qua
 
 ##  Expected Output
 The final Python-based pricing tool will:  
-- Accept **standard market inputs**: stock price, strike price, volatility, risk-free rate, maturity  
-- Accept **jump parameters**: jump intensity, jump size distribution  
-- Return **European option prices** that reflect real-world jump risk  
-- Support **side-by-side comparison**: Black–Scholes baseline vs. Jump-Diffusion pricing  
+- Accept standard market inputs: stock price, strike price, volatility, risk-free rate, maturity, etc.
+- Return empirically derived option prices based on the trained ML model.
+- Support side-by-side comparison: e.g., predictions from the GRU model vs. the Gradient Boosting model. 
