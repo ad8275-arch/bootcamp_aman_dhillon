@@ -12,7 +12,7 @@ While theoretical models like **Black-Scholes** provide a baseline for option pr
 Relying solely on theoretical models can lead to systematic mispricing and missed trading opportunities. Traders and risk managers need a pricing tool that learns directly from market data to generate more accurate, empirical valuations.
 
 **Solution:**  
-This project develops a **machine learning pipeline** to predict option prices using a rich set of engineered features. By training models like **Gradient Boosting** and **Recurrent Neural Networks (GRU)**, we can capture intricate market patterns that theoretical formulas cannot. The result will be a more accurate pricing model for improved trade execution, risk assessment, and alpha generation.
+This project develops a **machine learning pipeline** to predict option prices using a rich set of engineered features. By training models like **LSTM** and **Recurrent Neural Networks (GRU)**, we can capture intricate market patterns that theoretical formulas cannot. The result will be a more accurate pricing model for improved market pricing of options.
 
 ---
 
@@ -26,38 +26,28 @@ This project develops a **machine learning pipeline** to predict option prices u
 
 ---
 
-## Useful Answer & Decision
-
-**Type:** Predictive — the models forecast option market prices based on historical data.
-
-**Metrics:**
-- **Accuracy** → Significant reduction in RMSE and MAE compared to a baseline model.  
-- **Robustness** → Stable performance across various market conditions and out-of-sample data.  
-- **Speed** → Model inference must be fast enough for practical use on the trading desk.  
-
-**Final Artifact:**  
-A trained ML model (e.g., the final GRU or LSTM model) serialized for use, and a comprehensive analysis notebook that validates its performance and explains the key feature drivers.
+# Assumptions, Constraints, and Risks  
 
 ---
 
-## Assumptions & Constraints
-
-### Assumptions
-- The historical options data (`syp_2020_2022.csv`) is a reliable representation of the market dynamics we want to model.  
-- The engineered features (e.g., *moneyness*, time to expiration, Greeks) effectively capture the key drivers of option prices.  
-- Market patterns learned from the training data will persist in the near future (i.e., the model is not overfit).  
-
-### Constraints
-- The model's predictions must be easily interpretable, or its feature importance must be explainable to pass internal model risk governance.  
-- The final solution must be reproducible; all data processing and modeling steps are contained within the project's code.  
+## Assumptions
+- **Market Data Availability**: Historical option and jump event data are sufficient for parameter calibration.  
+- **Computational Feasibility**: ML adds realism without causing unacceptable runtime overhead.  
+- **Model Applicability**: European-style options remain the scope; American options are out of scope for this project.  
 
 ---
 
-## Risks & Known Unknowns
+## Constraints
+- **Governance**: The model must be interpretable enough to pass internal model risk controls.  
+- **Integration**: Deployment should fit seamlessly into the existing trading infrastructure.  
+- **Scope**: Focused only on European vanilla options (calls & puts), not exotic derivatives.  
 
-- **Overfitting Risk** → The complex models (GRU, LSTM) might memorize the training data and perform poorly on unseen market data.  
-- **Concept Drift Risk** → A fundamental shift in market regime (e.g., a sudden volatility spike) could invalidate the learned patterns, requiring the model to be retrained.  
-- **Data Quality Risk** → Errors or gaps in the historical data could lead to a poorly performing model.  
+---
+
+## Risks
+- **Calibration Risk**: Parameter estimation for jumps may be unstable due to sparse jump data.  
+- **Model Risk**: Overfitting to rare events could harm out-of-sample performance.  
+- **Adoption Risk**: Traders may initially distrust a new model compared to the established BS framework.  
 
 ---
 
@@ -74,9 +64,9 @@ A trained ML model (e.g., the final GRU or LSTM model) serialized for use, and a
 
 ##  Repository Plan
 /data/ → Market & simulated option data (raw + processed)
-/src/ → Implementation of Black–Scholes, LSTM and GRU, API code
+/src/ → Implementation of helper functions code
 /notebooks/ → Exploratory analysis, calibration experiments, validation
-/docs/ → Stakeholder memo, validation reports, explainability notes
+/docs/ → Stakeholder memo
 
 
 
@@ -86,4 +76,4 @@ A trained ML model (e.g., the final GRU or LSTM model) serialized for use, and a
 The final Python-based pricing tool will:  
 - Accept standard market inputs: stock price, strike price, volatility, risk-free rate, maturity, etc.
 - Return empirically derived option prices based on the trained ML model.
-- Support side-by-side comparison: e.g., predictions from the GRU model vs. the Gradient Boosting model. 
+- Support side-by-side comparison: e.g., predictions from the GRU model and LSTM model vs. the BS model. 

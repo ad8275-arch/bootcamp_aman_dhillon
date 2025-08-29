@@ -4,7 +4,7 @@
 
 ## Assumptions
 - **Market Data Availability**: Historical option and jump event data are sufficient for parameter calibration.  
-- **Computational Feasibility**: Jump-Diffusion adds realism without causing unacceptable runtime overhead.  
+- **Computational Feasibility**: ML adds realism without causing unacceptable runtime overhead.  
 - **Model Applicability**: European-style options remain the scope; American options are out of scope for this project.  
 
 ---
